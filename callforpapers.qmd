@@ -1,0 +1,53 @@
+---
+title: "Call for Papers"
+#Human Sentence Processing 2024
+toc: false
+---
+
+We are happy to announce the call for papers for the 37th Annual Conference on Human Sentence Processing at the University of Michigan, Ann Arbor to be held May 16 to 18th, 2024.
+
+The NSF-funded special session for this year’s conference is entitled “Socially Situated Language Processing.” The planned special session focuses on how social information is integrated into language processing in comprehension, production, and acquisition. How can theories, questions, and methodologies from sociolinguistics and social psychology inform and be informed by research on language processing? How can language processing researchers engage more directly with language as it is practiced by and between socially diverse communities?
+
+We are delighted to welcome four invited presenters (in alphabetical order):
+
+ - Dr. Frances Blanchette, Center for Language Science, Pennsylvania State University
+ - Dr. Pia Knoeferle, Institut für deutsche Sprache und Linguistik, Humboldt-University of Berlin 
+ - Dr. Shiri Lev Ari, Department of Psychology, Royal Holloway University of London
+ - Dr. Alayo Tripp, Department of Linguistics, University of Florida
+
+We will also be hosting a memorial for our dear colleague, co-founder of the Conference on Human Sentence Processing, and President Emerita of the Society for Human Sentence Processing, Dr. Janet Dean Fodor. 
+
+HSP2024 will follow a hybrid model. However, in the interests of fostering community and lively in-person interactions, we hope that you will join us in person if you can. All podium presentations, including keynotes, will be both live-streamed and recorded; presentations will also be accompanied by live-captions and ASL interpretation. We will host both in-person and virtual poster sessions. The conference will follow guidelines for COVID-19 precautions, including contact-tracing and the distribution of masks at the conference venue, along with opportunities for outdoor socializing. 
+
+## Abstract submission information
+
+We welcome your contributions to the special session. And, as always, we invite abstracts related to language processing more generally. Abstracts may be submitted for posters or for 20-minute podium presentations.
+
+Abstracts are due on **Monday, January 15, 2024 by 11:59:59pm** (anywhere on earth).
+
+Dr.  Maayan Keshev has put together a [document of tips](https://docs.google.com/document/d/1J_amu8bT3tIcPGh_zY_M8nLq3FSRK8KNa2pZKlc0rfs/) for how to write a HSP abstract.
+
+Abstract specifications and more details can be found [below](#abstract-specifications).
+
+For more information, please contact [hsp2024-conf@umich.edu](mailto:hsp2024-conf@umich.edu).
+
+We are looking forward to seeing you May 16-18, 2024 in Ann Arbor!
+
+The HSP 2024 Organizing Committee  
+Julie Boland, Jonathan Brennan, Richard Lewis, Lisa Levinson, and Savithry Namboodiripad
+
+## Abstract Specifications
+
+ - The text of the abstract is limited to a single page. Tables, examples, data charts and references may be placed on a second page.
+ - Abstracts should not include authors or affiliations in the PDF. Please also avoid any identifying information about the authors in the text of the abstract itself (e.g., "In our previous work, we found...").
+ - Please be sure your abstract mentions the language(s) being investigated. Do not omit the language under investigation if it is English.
+ 
+Format:
+
+ - 1" margin all around 
+ - 11pt Arial font 
+ - U.S. Letter size document (8.5 x 11") in portrait orientation.
+ 
+## Submission Portal
+ 
+Abstracts should be submitted via [Oxford Abstracts](https://app.oxfordabstracts.com/stages/9198/submitter).

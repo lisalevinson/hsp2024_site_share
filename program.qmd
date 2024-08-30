@@ -1,0 +1,551 @@
+---
+title: "Program"
+#Human Sentence Processing 2024
+toc: false
+execute: 
+  freeze: false
+  echo: false
+  warning: false
+  message: false
+#resources: 
+#  - "abstracts/*.pdf"
+---
+
+Recordings for the full conference are available on this [playlist](https://www.mivideo.it.umich.edu/playlist/dedicated/1_w84evh3k/1_5el0yj25). Individual session recordings are also linked from the daily program pages below. 
+
+The detailed program is posted below. The main conference program will run for full days on Thursday, Friday,
+and Saturday, with a reception/party the first night, Thursday May 16, 
+from 8-11pm. **Ann Arbor is in the Eastern time zone - all times listed are in EDT (Eastern Daylight Time)!** 
+
+[The Janet Dean Fodor Memorial Workshop](fodor-memorial-workshop.qmd) will be 11:30-6:00pm on Wednesday, May 15. 
+
+We are trying to increase accessibility and visibility of remote posters at the conference, and thus are offering four different poster modalities, indicated on the program: 
+
+ - *In-person* - traditional printed poster with in-person walk-through, remote access to materials via our [OSF Meetings page](https://osf.io/meetings/hsp2024)
+ - *OSF only* - the poster and any associated materials, including video walkthroughs, will only be available on our [OSF Meetings page](https://osf.io/meetings/hsp2024)
+ - *Print + OSF* - in addition to OSF availability, a physical poster will be posted in a poster session room for in-person attendees to view
+ - *Zoom + OSF / Zoom + Print + OSF* - in addition to OSF availability, all Zoom posters will have in-person "hubs" in a poster session room where in-person attendees can view the poster (on a monitor and/or printed) and also interact with the remote presenter and remote attendees in a Zoom breakout room for a Q&A session. Zoom links will be shared with registered participants via email. Some Zoom posters will also have printed posters available at their hubs. 
+ 
+[HSP 2024 Code of Conduct](resources/hsp2024-code-of-conduct.pdf)
+
+Presentations marked with an asterisk (*) on the program are those indicated as influenced by Janet Dean Fodor and/or her work. 
+ 
+[Printable Schedule (All Days)](full_schedule.pdf) | [Poster Session A](poster_session_A.qmd) | [Poster Session B](poster_session_B.qmd) | [Poster Session C](poster_session_C.qmd) | [Poster Session D](poster_session_D.qmd)
+
+```{r}
+library(readxl)
+library(tidyverse)
+library(gtExtras)
+library(googlesheets4)
+here::i_am("program.qmd")
+library(here)
+```
+
+```{r vars}
+fodorsheet <- "https://docs.google.com/spreadsheets/d/1ooKUhYFmt9HS8EVTL7TAqQfVDdPEtGyF5AwRVnGuoeM/"
+program <- "https://docs.google.com/spreadsheets/d/1jMmPlBxbEnSX8Q2jN7AW4eYI6vaGsXh_9OwaSk39ApQ"
+postersessions <- "https://docs.google.com/spreadsheets/d/1daHrMwOnLkNDZVgYGR77fdvQwFOFbN7WDVSSOqHCBE8/"
+
+# uncomment and set a Google account if switching to protected sheets
+#gmail <- "you@umich.edu"
+#gs4_auth(email = gmail)
+```
+
+```{r}
+df_decisions <- read_xlsx(here("_scripts/oa_decisions.xlsx")) |> 
+  janitor::clean_names()
+
+df_accepted <- df_decisions |>
+  filter(decision %in% c("Accepted: Poster presentation", "Accepted: Plenary/podium presentation")) |>
+  mutate(type = if_else(decision == "Accepted: Plenary/podium presentation", "plenary", "poster")) |>
+  select(-c(complete, author_forms_complete, complete_reviews, submission_last_updated, incomplete_reviews, average_grade, decision_last_updated, final_category, notes_to_submitter, incomplete_reviews)) |>
+  rename(modality = poster_modality)
+
+df_accepted <- df_accepted |> 
+  mutate(url = paste0("abstracts/submission_", submission_id,".pdf"))
+
+```
+
+```{r}
+invited <- duration(minute = 50)
+plenary <- duration(minute = 30)
+poster1 <- duration(minute = 80)
+poster <- duration(minute = 80)
+durations <- tibble(type = c("invited", "plenary", "poster1", "poster"),
+  durations = c(invited, plenary, poster1, poster))
+
+#generate sequence of dates from 5/16 8:30am to 5/18 8pm
+thutimes <- seq(ymd_hm('2024-05-16 8:30', tz = "America/New_york"), ymd_hm('2024-05-16 22:00',tz = "America/New_york"), by='10 min')
+fritimes <-  seq(ymd_hm('2024-05-17 8:30', tz = "America/New_york"), ymd_hm('2024-05-17 18:00',tz = "America/New_york"), by='10 min')
+sattimes <- fritimes + days(1)
+
+df_alltimes <- tibble(id = 1:(length(thutimes) + length(fritimes) + length(sattimes)), times = c(thutimes, fritimes, sattimes)) 
+
+```
+
+```{r}
+df_schedule <- left_join(df_accepted, durations)
+```
+
+```{r fodor}
+df_fodor <- read_sheet(fodorsheet) |>  janitor::clean_names() 
+
+df_fodor <- df_fodor |> 
+  rename(influenced = has_the_work_you_are_presented_at_hsp_been_influenced_by_janet_d_fodor, submission_id = oxford_abstract_submission_id) |> 
+  filter(influenced == "Yes") |> 
+  mutate(submission_id = as.numeric(submission_id),
+         fodor = "*")
+
+#df_fodor |> count(submission_id) |> arrange(desc(n))
+
+# add fodor stars to schedule
+df_schedule <- df_schedule |> left_join(select(df_fodor, submission_id, fodor), join_by(submission_id))
+```
+
+```{r programsheet}
+
+
+df_sheetprog <- read_sheet(ss = program) |> 
+  janitor::clean_names()
+
+#write_csv(df_sheetprog, here("_scripts/program.csv"))
+#df_sheetprog <- read_csv(here("_scripts/program.csv"))
+```
+
+```{r}
+df_sheetprog <- df_sheetprog |> 
+  # filter out rows with NA in all friday_may_17
+  filter(!(is.na(friday_may_17) & is.na(thursday_may_16) & is.na(saturday_may_18))) |>
+  select(-c(x3, x5)) |> 
+  rename(time = x1) 
+
+df_prog <- df_sheetprog |> 
+  mutate(time = paste0(hour(time), ":", minute(time)),
+          time = str_replace_all(time, ":0$", ":00")
+  )
+```
+
+```{r}
+df_progmod <- df_prog |> 
+  mutate(thu_id = str_extract(thursday_may_16, "^[0-9]+"),
+         fri_id = str_extract(friday_may_17, "^[0-9]+"),
+         sat_id = str_extract(saturday_may_18, "^[0-9]+")) |> 
+  mutate(across(c(thu_id, fri_id, sat_id), as.numeric))
+
+df_progmod <- df_progmod |>   
+  left_join(select(df_schedule, submission_id, thu_auth = authors, 
+                   thu_title = submission_title, thu_key = keywords, 
+                   thu_fodor = fodor), join_by(thu_id == submission_id)) |> 
+    left_join(select(df_schedule, submission_id, fri_auth = authors, 
+                     fri_title = submission_title, fri_key = keywords, 
+                     fri_fodor = fodor), join_by(fri_id == submission_id)) |> 
+    left_join(select(df_schedule, submission_id, sat_auth = authors, 
+                     sat_title = submission_title, sat_key = keywords, 
+                     sat_fodor = fodor), join_by(sat_id == submission_id)) |> 
+  mutate(thu_text = if_else(!is.na(thu_title), 
+                            paste0(thu_title, " (", thu_auth, ")"), thursday_may_16),
+         fri_text = if_else(!is.na(fri_title), 
+                            paste0(fri_title, " (", fri_auth, ")"), friday_may_17),
+         sat_text = if_else(!is.na(sat_title), 
+                            paste0(sat_title, " (", sat_auth, ")"), saturday_may_18)) |> 
+  mutate(thu_url = if_else(!is.na(thu_title), 
+                           paste0("abstracts/submission_", thu_id,".pdf"), NA),
+         fri_url = if_else(!is.na(fri_title), 
+                           paste0("abstracts/submission_", fri_id,".pdf"), NA), 
+         sat_url = if_else(!is.na(sat_title), 
+                           paste0("abstracts/submission_", sat_id,".pdf"), NA))
+
+df_progmod <- df_progmod |> 
+  mutate(thu_url = case_when(time == "10:50" ~ "abstracts/blanchette.pdf", 
+                            time == "15:20" ~ "abstracts/knoeferle.pdf", 
+                             .default = thu_url),
+         fri_url = if_else(time == "10:50", "abstracts/tripp.pdf", fri_url),
+         sat_url = if_else(time == "10:50", "abstracts/lev-ari.pdf", sat_url)) 
+
+df_progmod <- df_progmod |> 
+  mutate(thu_url = if_else(time == "17:20", "poster_session_A.html", thu_url),
+        fri_url = case_when(time == "13:20" ~ "poster_session_B.html",
+                           time == "17:00" ~ "poster_session_C.html",
+                           .default = fri_url),
+      sat_url = if_else(time == "13:20", "poster_session_D.html", sat_url))
+  
+```
+
+
+```{r postersheet1}
+
+df_postersessions <- read_sheet(ss = postersessions, 
+                                sheet = "Final Draft")  |> 
+  select(-c(submitter_email, authors, 
+  keywords, first_keyword, draft_program_code, swap_code, vals_final_program_code)) 
+  
+# Posters A (Thu 5:20-6:40pm)
+# Posters B (Fri 1:20-2:40pm)
+# Posters C (Fri 5:00-6:20pm)
+# Posters D (Sat 1:20-2:40pm)
+
+df_postersessions <- df_postersessions |> 
+  mutate(poster_modality = case_when(remote_type == "Zoom" ~ "Zoom + OSF",
+                                     remote_type == "Zoom+print" ~ "Zoom + Print + OSF",
+                                     remote_type == "OSF" ~ "OSF Only",
+                                     remote_type == "print" ~ "Print + OSF",
+                                    .default = poster_modality
+                                      ))
+df_sess <- df_postersessions |> 
+  select(submission_id, session, poster_num, poster_modality, osf) 
+ # modality_check <- df_postersessions |> 
+ #   left_join(select(df_schedule, submission_id, modality)) |> 
+ #   filter(poster_modality != modality)
+
+df_schedule <- df_schedule |> left_join(df_sess)  
+  # mutate(session = if_else(modality == "Online" & type == "poster", "TBD", session),
+  #        time = if_else(modality == "Online" & type == "poster", "", time))
+```
+
+```{r postersheet2}
+df_posters <- df_schedule |> 
+  filter(type == "poster") |> 
+  select(submission_id, authors, submission_title, poster_modality, keywords, session, poster_num, fodor, osf) |> 
+  mutate(url = paste0("abstracts/submission_", submission_id,".pdf")) |> 
+  select(-submission_id) |> 
+  arrange(session, poster_num)
+```
+
+
+```{r completeschedule}
+df_plenary_times <- df_progmod |> 
+  select(time, thu_id, fri_id, sat_id) |> 
+  pivot_longer(cols = c(thu_id, fri_id, sat_id), names_to = "day") |> 
+  filter(!is.na(value)) |> 
+  rename(submission_id = value) |> 
+  mutate(day = case_when(day == "thu_id" ~ "Thursday",
+                          day == "fri_id" ~ "Friday",
+                          day == "sat_id" ~ "Saturday",
+  .default = "NA"),
+         datetime = case_when(day == "Thursday" ~ ymd_hm(paste0("2024-05-16 ", time), tz = "America/New_York"),
+  day == "Friday" ~ ymd_hm(paste0("2024-05-17 ", time), tz = "America/New_York"),
+  day == "Saturday" ~ ymd_hm(paste0("2024-05-18 ", time), tz = "America/New_York"),
+  )) |> 
+  # convert datetime to 12hr format with day name
+  mutate(datetime = format(datetime, "%A %I:%M %p")) 
+  
+# join times to df_schedule
+df_schedule <- df_schedule |> 
+  left_join(select(df_plenary_times, submission_id, time = datetime), by = "submission_id") |> 
+  mutate(time = case_when((type == "poster" & session == "A") ~ "Thursday 5:20-6:40pm",
+                          (type == "poster" & session == "B") ~ "Friday 1:20-2:40pm",
+                          (type == "poster" & session == "C") ~ "Friday 5:00-6:20pm",
+                          (type == "poster" & session == "D") ~ "Saturday 1:20-2:40pm",
+                          .default = time)
+  )
+
+# append info for invited presentations
+df_invited <- read_csv(here("_scripts", "invited.csv"))
+
+df_schedule <- bind_rows(df_schedule, df_invited)
+#write_sheet(df_schedule, ss = program, sheet = "NO EDIT schedule list")
+saveRDS(df_progmod, here("_scripts", "df_progmod.rds"))
+```
+
+::: panel-tabset
+## All Days
+
+```{r}
+#| echo: false
+ 
+df_progmod  |> 
+  select(time, thu_text, thu_url, thu_fodor, fri_text, fri_url, fri_fodor, sat_text, sat_url, sat_fodor) |> 
+  gt() |> 
+  cols_align(align = "left", columns = everything()) |> 
+  cols_label(
+    time = "Time",
+    thu_text = "Thursday",
+    fri_text = "Friday",
+    sat_text = "Saturday"
+  ) |>
+  sub_missing(
+    columns = c(thu_url, fri_url, sat_url, thu_text, fri_text, sat_text),
+    rows = everything(),
+    missing_text = "") |> 
+  fmt_url(
+    columns = c(thu_url, fri_url, sat_url),
+    label = function(x) if_else(str_detect(x, "abstract"), "abstract", "details")
+  ) |> 
+  cols_merge(
+    columns = c(thu_text, thu_fodor, thu_url),
+    pattern = "<<{2}>>{1} <br> {3}"
+  ) |> 
+  cols_merge(
+    columns = c(fri_text, fri_fodor, fri_url),
+    pattern = "<<{2}>>{1} <br> {3}"
+  ) |> 
+  cols_merge(
+    columns = c(sat_text, sat_fodor, sat_url),
+    pattern = "<<{2}>>{1} <br> {3}"
+  ) |>
+  opt_row_striping(TRUE) |> 
+  opt_interactive(use_search = TRUE,
+                  use_pagination = FALSE,
+                  use_sorting = FALSE
+      ) |> 
+  cols_width(
+    time ~ px(100)
+)
+
+```
+
+## Thursday
+Session 2: 
+```{r}
+#| echo: false
+df_progmod  |> 
+  select(time, thu_fodor, thu_text, thu_url, thu_key) |> 
+    filter(!is.na(thu_text)) |> 
+  add_row(time = "", thu_text = "Session 1", 
+          thu_url = "https://www.mivideo.it.umich.edu/media/t/1_s3jx857y", 
+          thu_key = "Chair: Dave Kush", .after = 2) |> 
+  add_row(time = "", thu_text = "Session 2", thu_key = "Chair: E. Matthew Husband", 
+          thu_url = "https://www.mivideo.it.umich.edu/media/t/1_62sfr9mx",
+          .after = 7) |> 
+  add_row(time = "", thu_text = "Session 3", thu_key = "Chair: Emily Atkinson",          
+          thu_url = "https://www.mivideo.it.umich.edu/media/t/1_lklwbuyy",
+          .after = 11) |> 
+  add_row(time = "", thu_text = "Session 4", thu_key = "Chair: Emily Morgan",          
+          thu_url = "https://www.mivideo.it.umich.edu/media/t/1_636z6w8l",
+          .after = 16) |> 
+  gt() |> 
+  opt_row_striping(TRUE) |> 
+  cols_align(align = "left", columns = everything()) |> 
+  cols_label(
+    time = "Time",
+    thu_text = "Thursday",
+    thu_key = "Keywords"
+  ) |>
+  sub_missing(
+    columns = c(thu_text, thu_key, thu_url),
+    rows = everything(),
+    missing_text = "") |> 
+  fmt_url(
+    columns = thu_url,
+    label = function(x) case_when(str_detect(x, "abstract") ~ "abstract", 
+                                  str_detect(x, "mivideo") ~ "recording", 
+                                  .default = "details")
+    ) |> 
+  cols_merge(
+    columns = c(thu_text, thu_fodor, thu_url),
+    pattern = "<<{2}>>{1} <br> {3}"
+  ) |> 
+  opt_interactive(use_filters = TRUE,
+                  use_search = TRUE,
+                  use_pagination = FALSE
+      ) |> 
+  cols_width(
+    time ~ px(100)  ) |> 
+  tab_style(
+    style = cell_fill(color = "#99cfd1"),
+    locations = cells_body(
+      rows = c(3,8,12,17)
+      )
+  ) |> 
+    tab_style(
+    style = cell_fill(color = "#d2eeea"),
+    locations = cells_body(
+      rows = c(7,11,16,21)
+      )
+  ) |> 
+    tab_style(
+    style = cell_fill(color = "#7FE0DB"),
+    locations = cells_body(
+      rows = 22
+      )
+  )
+
+```
+
+## Friday
+
+```{r}
+#| echo: false
+df_progmod  |> 
+  select(time, fri_fodor, fri_text, fri_url, fri_key) |> 
+    filter(!is.na(fri_text)) |> 
+  add_row(time = "", fri_text = "Session 5: Socially Situated Language Processing", fri_key = "Chair: Cynthia Lukyanenko", 
+          fri_url = "https://www.mivideo.it.umich.edu/media/t/1_llqx5mbv",
+          .after = 1) |> 
+  add_row(time = "", fri_text = "Session 6", fri_key = "Chair: Yi Ting Huang", 
+          fri_url = "https://www.mivideo.it.umich.edu/media/t/1_c0bdnz5u",
+          .after = 6) |> 
+  add_row(time = "", fri_text = "Session 7", fri_key = "Chair: Dustin Chacón", 
+          fri_url = "https://www.mivideo.it.umich.edu/media/t/1_bpjq248u",
+          .after = 11) |> 
+  add_row(time = "", fri_text = "Session 8", fri_key = "Chair: Liina Pylkkänen", 
+          fri_url = "https://www.mivideo.it.umich.edu/media/t/1_2m8sj3m7",
+          .after = 14) |> 
+  gt() |> 
+  opt_row_striping(TRUE) |> 
+  cols_align(align = "left", columns = everything()) |> 
+  cols_label(
+    time = "Time",
+    fri_text = "Friday",
+    fri_key = "Keywords"
+  ) |>
+  sub_missing(
+    columns = c(fri_text, fri_key, fri_url),
+    rows = everything(),
+    missing_text = "") |> 
+  fmt_url(
+    columns = fri_url,
+    label = function(x) case_when(str_detect(x, "abstract") ~ "abstract", 
+                                  str_detect(x, "mivideo") ~ "recording", 
+                                  .default = "details")
+  ) |> 
+  cols_merge(
+    columns = c(fri_text, fri_fodor, fri_url),
+    pattern = "<<{2}>>{1} <br> {3}"
+  ) |> 
+  opt_interactive(use_filters = TRUE, 
+                  use_search = TRUE,
+                  use_pagination = FALSE
+      ) |> 
+  cols_width(
+    time ~ px(100)  )  |> 
+  tab_style(
+    style = cell_fill(color = "#99cfd1"),
+    locations = cells_body(
+      rows = c(2,7,12,15)
+      )
+  ) |> 
+    tab_style(
+    style = cell_fill(color = "#d2eeea"),
+    locations = cells_body(
+      rows = c(6,10,14)
+      )
+  ) |> 
+    tab_style(
+    style = cell_fill(color = "#7FE0DB"),
+    locations = cells_body(
+      rows = c(11,19)
+      )
+  )
+
+```
+
+## Saturday
+
+```{r}
+#| echo: false
+df_progmod  |> 
+  select(time, sat_fodor, sat_text, sat_url, sat_key) |> 
+    filter(!is.na(sat_text)) |> 
+  add_row(time = "", sat_text = "Session 9", sat_key = "Chair: Jennifer Arnold", 
+          sat_url = "https://www.mivideo.it.umich.edu/media/t/1_l7vgx3zv", 
+          .after = 1) |> 
+  add_row(time = "", sat_text = "Session 10", sat_key = "Chair: Victor Ferreira",           
+          sat_url = "https://www.mivideo.it.umich.edu/media/t/1_fw0e73zx", 
+          .after = 6) |> 
+  add_row(time = "", sat_text = "Session 11", sat_key = "Chair: Matthew Traxler", 
+          sat_url = "https://www.mivideo.it.umich.edu/media/t/1_tsss5gp5", 
+          .after = 11) |> 
+  add_row(time = "", sat_text = "Session 12", sat_key = "Chair: Dan Parker", 
+          sat_url = "https://www.mivideo.it.umich.edu/media/t/1_qlhxi9zt", 
+          .after = 15) |> 
+  gt() |> 
+  cols_align(align = "left", columns = everything()) |> 
+  opt_row_striping(TRUE) |> 
+  cols_label(
+    time = "Time",
+    sat_text = "Saturday",
+    sat_key = "Keywords"
+  ) |>
+  sub_missing(
+    columns = c(sat_text, sat_key, sat_url),
+    rows = everything(),
+    missing_text = "") |> 
+  fmt_url(
+    columns = sat_url,
+    label = function(x) case_when(str_detect(x, "abstract") ~ "abstract", 
+                                  str_detect(x, "mivideo") ~ "recording", 
+                                  .default = "details")
+  ) |> 
+  cols_merge(
+    columns = c(sat_text, sat_fodor, sat_url),
+    pattern = "<<{2}>>{1} <br> {3}"
+  ) |> 
+  opt_interactive(use_filters = TRUE, 
+                  use_search = TRUE,
+                  use_pagination = FALSE
+      ) |> 
+  cols_width(
+    time ~ px(100)  ) |> 
+  tab_style(
+    style = cell_fill(color = "#99cfd1"),
+    locations = cells_body(
+    rows = c(2,7,12,16)
+      )
+  ) |> 
+    tab_style(
+    style = cell_fill(color = "#d2eeea"),
+    locations = cells_body(
+      rows = c(6,10,15)
+      )
+  ) |> 
+    tab_style(
+    style = cell_fill(color = "#7FE0DB"),
+    locations = cells_body(
+      rows = 11
+      )
+  )
+
+```
+
+## All Posters
+
+```{r postersheet}
+df_posters <- df_posters |> 
+  relocate(fodor, .before = submission_title)
+  
+saveRDS(df_posters, here("_scripts", "df_posters.rds"))
+  
+df_posters |> 
+  gt() |> 
+  opt_row_striping(TRUE) |> 
+  cols_label(
+    authors = "Authors",
+    submission_title = "Title",
+    poster_modality = "Modality",
+    keywords = "Keywords",
+    session = "Num"
+  ) |>
+  sub_missing(
+    columns = osf,
+    rows = everything(),
+    missing_text = "") |> 
+  fmt_url(
+    columns = url,
+    label = function(x) if_else(str_detect(x, "abstract"), "abstract", "details")
+  ) |> 
+  fmt_url(
+    columns = osf,
+    label = "OSF"
+  ) |> 
+  cols_align(align = "left", columns = everything()) |> 
+   cols_merge(
+     columns = c(session, poster_num),
+     pattern = "{1}{2}"
+   ) |> 
+  cols_merge(
+    columns = c(submission_title, fodor, url, osf),
+    pattern = "<<{2}>>{1} {3} {4}"
+  ) |> 
+  opt_interactive(use_filters = TRUE, 
+                  use_search = TRUE,
+                  use_sorting = TRUE
+      ) |> 
+  cols_width(
+    poster_modality ~ px(100),
+    session ~ px(75)
+ ) 
+
+```
+
+:::

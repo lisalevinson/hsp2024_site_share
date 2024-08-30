@@ -1,0 +1,74 @@
+---
+title: "Poster Session A"
+#subtitle: "Subtitle"
+#Human Sentence Processing 2024
+toc: false
+execute: 
+  freeze: false
+  echo: false
+  warning: false
+  message: false
+params:
+  session: "A"
+---
+
+```{r}
+library(tidyverse)
+library(gtExtras)
+here::i_am("poster_session_A.qmd")
+library(here)
+```
+
+```{r}
+df_posters <- readRDS(here("_scripts", "df_posters.rds"))
+```
+
+```{r postersheet}
+df_posters |> 
+  filter(session == params$session) |> 
+  gt() |> 
+  opt_row_striping(TRUE) |> 
+  cols_label(
+    authors = "Authors",
+    submission_title = "Title",
+    poster_modality = "Modality",
+    keywords = "Keywords",
+    session = "Num"
+  ) |>
+  sub_missing(
+    columns = osf,
+    rows = everything(),
+    missing_text = "") |> 
+  fmt_url(
+    columns = url,
+    label = "abstract"
+#    as_button = TRUE,
+#    button_fill = "#99cfd1"
+#  "#99cfd1" "#d2eeea"
+  ) |> 
+  fmt_url(
+    columns = osf,
+    label = "OSF"
+#    as_button = TRUE,
+#    button_fill = "#d2eeea"
+  ) |> 
+  cols_align(align = "left", columns = everything()) |> 
+   cols_merge(
+     columns = c(session, poster_num),
+     pattern = "{1}{2}"
+   ) |> 
+  cols_merge(
+    columns = c(submission_title, fodor, url, osf),
+    pattern = "<<{2}>>{1} {3} {4}"
+  ) |> 
+  opt_interactive(use_filters = TRUE, 
+                  use_search = TRUE,
+                  use_sorting = TRUE,
+                  use_pagination = FALSE
+      ) |> 
+  cols_width(
+    poster_modality ~ px(100),
+    session ~ px(75)
+ ) 
+
+```

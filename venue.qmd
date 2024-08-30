@@ -1,0 +1,145 @@
+---
+title: "Venue"
+toc: true
+lightbox: true
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+HSP 2024 will be **hybrid**, with attendees welcome to participate
+in-person in Ann Arbor or synchronously online. Plenary presentations will also be recorded and shared at a later date; other conference materials, including video walkthroughs for some posters, will be available on our [OSF Meetings page](https://osf.io/meetings/hsp2024).
+
+## Site Information
+
+In-person events will be hosted on the central campus of University of
+Michigan in Ann Arbor, which is located in downtown Ann Arbor.
+
+The main site will be the [Central Campus Classroom Building
+(CCCB)](https://maps.studentlife.umich.edu/building/central-campus-classroom-building) -
+see the location on [Google
+Maps](https://maps.app.goo.gl/bptuVxVyQtbTCKGD7).
+
+[Brief local restaurant and activity guide](resources/local-guide.pdf)
+
+You will find many restaurants within a 10-minute walk located on South
+University (two blocks south), or on North University starting at Thayer
+(follow Geddes northeast, it becomes North University), and then State
+Street at the end of North University.
+
+This map shows some key locations ([PDF version](resources/hsp2024-map.pdf)):
+
+![](images/hsp2024-map.png){fig-alt="campus map showing conference site and other nearby amenities"
+width="75%"}
+
+See below for information about getting to and staying in Ann Arbor, and
+[join our attendee discord](https://discord.gg/6uMgwQE3) if you want to
+discuss your arrangements with other conference attendees!
+
+## Accessibility and Accommodations
+
+The conference site is fully wheelchair-accessible. All plenary presentations
+will have ASL interpretation and CART captioning, available in-person
+and on Zoom. The best view for ASL interpretation screens will be the front 
+row, just left of center. Captions will be visible from all seats. 
+
+Gender-neutral single-user bathrooms are available on all floors next
+to the multi-user bathrooms. A 
+lactation room (0510) and quiet reflection room (2510) are available - for
+access see any local volunteer or organizer who can use their UM ID card to
+unlock the door. Catering staff should be able to answer any questions
+about food ingredients for those with special dietary needs. If you 
+indicated any needs during registration that are not accounted for by 
+the regular menu, you should have received an email with additional
+contact information. If you have additional concerns about any access 
+needs, contact the organizers at <hsp2024-conf@umich.edu>.
+
+## Getting to Ann Arbor
+
+### Plane
+
+Flying into [DTW](https://www.metroairport.com/) is the most convenient
+way to get to Ann Arbor by plane. From the airport, Ann Arbor is a 30
+minute drive (\~\$30 - \$40 via ride share), or you can take the
+[Michigan Flyer](https://www.michiganflyer.com/FaresPromotions.aspx) to
+Blake Transit Center (\$25 round trip, \$15 one way).
+
+### Train
+
+Ann Arbor has an [Amtrak station](https://www.amtrak.com/stations/arb),
+from which it is a 20 min walk or 7 min drive to campus and downtown Ann
+Arbor.
+
+## Public Transit in Ann Arbor
+
+Our main conference site
+([CCCB](https://maps.studentlife.umich.edu/building/central-campus-classroom-building))
+is located right next to the [CCTC (Central Campus Transit
+Center)](https://tour.umich.edu/text-based/locations/central-campus-transit-center/)
+bus station.
+
+Downtown Ann Arbor and UM's central campus are very walkable areas. All
+conference events will be within walking distance of each other (the
+only non-CCCB event is the reception at
+[UMMA](https://umma.umich.edu/)). However if you are not able to walk or
+your accommodations are further from central campus, you may want to use
+one of the following transportation options:
+
+[TheRide](https://www.theride.org/)
+
+TheRide is Ann Arbor's busing system that runs in Ann Arbor and parts of
+Ypsilanti. Fares can be purchased
+[in-person](https://www.theride.org/fares-passes/buy-person) at select
+locations or online using the [EZfare
+app](https://www.theride.org/fares-passes/mobile-ticketing). The list of
+routes can be found
+[here](https://www.theride.org/maps-schedules/route-maps-schedules-library).
+
+[University of Michigan Campus
+Transportation](https://ltp.umich.edu/campus-transit/routes-and-schedules/)
+
+The University of Michigan has campus buses that are free to ride. There
+are several routes across the north, central, and southern campuses. See
+[this pdf of the university bus
+routes](https://ltp.umich.edu/wp-content/uploads/university-bus-routes.pdf).
+
+There is limited metered street parking in the conference area, but it
+is generally restricted to 4-hour or 2-hour parking, and on weekdays
+these limits are strictly enforced. If you are driving to the site, you
+may want to use the visitor parking at [Palmer Parking
+Structure](https://maps.app.goo.gl/3NLs7fg5R8NdW4w99) which is a short
+walk from CCCB. [Full campus parking
+information](https://ltp.umich.edu/parking/patient-and-visitor/campus-visitor-parking/)
+might be useful for exploring other options. There are also city parking
+lots located in downtown, but these are not as close to the CCCB.
+
+## Accommodation
+
+The University of Michigan has a [list of
+accommodations](https://campusinfo.umich.edu/article/accommodations).
+Destination Ann Arbor has a [list of hotel
+packages](https://www.annarbor.org/hotels/hotel-packages/) that may be
+helpful in finding accommodations.
+
+Hotels located downtown are typically walkable to the University, but
+more expensive per night. Hotels on the edges of town tend to be more
+affordable per night. If you will have a car, make sure to check for
+parking fees. There are also room, apartment, house, and vacation
+rentals available in Ann Arbor.
+
+The following hotels are within about a 10-minute walk from the main
+conference building:
+
+-   [Executive Learning and Conference Center
+    (U-M)](https://www.acc-elandconferencecenter.com/)
+-   [The Inn at the Michigan League](https://inn.studentlife.umich.edu/)
+-   [The Bell Tower Hotel](https://belltowerhotel.com/)
+-   [Ann Arbor Bed & Breakfast](http://annarborbedandbreakfast.com/)
+-   [Graduate Hotel](http://graduateannarbor.com/)
+
+The following hotels are also very centrally located in town, but not
+quite as close to the primary conference building:
+
+-   [Residence Inn by Marriott Ann Arbor
+    Downtown](https://www.marriott.com/en-us/hotels/arbdt-residence-inn-ann-arbor-downtown)
+    (23 minute walk)

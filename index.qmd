@@ -1,0 +1,49 @@
+---
+title: "HSP 2024: 37th Annual Conference on Human Sentence Processing"
+title-block-style: default
+about: marquee
+image: images/HSP_logo_transparent_white.svg
+image-alt: HSP2024 logo with wolverine
+#mainfont: VictorMonoMed
+toc: false
+---
+
+## May 16-18, 2024
+
+University of Michigan, Ann Arbor \@ the [Central Campus Classroom Building (CCCB)](https://maps.app.goo.gl/bptuVxVyQtbTCKGD7).
+
+[Janet Dean Fodor Memorial Workshop:](fodor-memorial-workshop.qmd) - May 15
+
+## Special Session:
+
+Socially Situated Language Processing
+
+## Invited presenters (in alphabetical order):
+
+-   Dr. Frances Blanchette, Center for Language Science, Pennsylvania State University
+-   Dr. Pia Knoeferle, Institut für deutsche Sprache und Linguistik, Humboldt-University of Berlin
+-   Dr. Shiri Lev-Ari, Department of Psychology, Royal Holloway University of London
+-   Dr. Alayo Tripp, Department of Linguistics, University of Florida
+
+## [Program](program.qmd)
+
+## Sponsors
+
+![](images/sponsors/NSF_logo.jpg){fig-alt="NSF logo" width="20%"}![](images/sponsors/finding-five-logo-small-87ad8077.png){fig-alt="Finding Five logo" width="20%"}  ![](images/sponsors/cropped-sr-research-logo-square-192x192.png){fig-alt="SR Research Eyelink logo" width="18%"}
+
+![](images/sponsors/LingLogo1.jpg){fig-alt="UM Linguistics logo" width="50%"}![](images/sponsors/GC_LOGO_HORIZ_WEB_005DAA.png){fig-alt="CUNY Graduate Center logo" width="50%"}
+
+![](images/sponsors/psych-logo.png){fig-alt="UM Psychology logo" width="50%"}![](images/sponsors/weinberginstitute-logo.png){fig-alt="UM Weinberg Institute logo" width="50%"}
+
+## Organizers
+
+-   Julie Boland
+-   Jon Brennan
+-   Lisa Levinson
+-   Rick Lewis
+-   Savithry Namboodiripad
+
+## Contact
+
+Questions? Contact the organizers at [hsp2024-conf@umich.edu](hsp2024-conf@umich.edu).
+

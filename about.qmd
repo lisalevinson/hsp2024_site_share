@@ -1,0 +1,57 @@
+---
+title: "About"
+about: jolla
+title-block-style: default
+#mainfont: VictorMonoMed
+---
+::: {style="font-family: VictorMonoMed"}
+
+::::  {style="font-family: VictorMonoMed; font-size: 3rem; text-align: center"}
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+HSP 2024
+
+University of Michigan
+
+Ann Arbor  
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+::::
+
+:::: {style="font-size: 2rem"}
+
+\_\_\_ \_\_\_\_ May 16-18, 2024 \_\_\_ 
+::::
+
+:::: {style="font-size: 3rem"}
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+
+
+::::
+
+
+## [Janet Dean Fodor Memorial Workshop:](fodor-memorial-workshop.qmd)
+
+:::: {style="font-size: 1.5rem"}
+May 15, 2024
+
+::::
+
+## Special Session: 
+
+:::: {style="font-size: 1.5rem"}
+Socially Situated Language Processing
+
+::::
+
+::::  {style="font-size: 1rem; text-align: left"}
+
+Invited presenters (in alphabetical order):
+
+ - Dr. Frances Blanchette, Center for Language Science, Pennsylvania State University
+ - Dr. Pia Knoeferle, Institut für deutsche Sprache und Linguistik, Humboldt-University of Berlin 
+ - Dr. Shiri Lev Ari, Department of Psychology, Royal Holloway University of London
+ - Dr. Alayo Tripp, Department of Linguistics, University of Florida
+
+:::: 
+:::

@@ -1,0 +1,11 @@
+---
+title: "Registration"
+#Human Sentence Processing 2024
+toc: false
+---
+
+Discounted early bird registration is available through April 15!
+
+Registration can be completed at the following site:
+
+<https://umich-ssc.jotform.com/240595066021956>

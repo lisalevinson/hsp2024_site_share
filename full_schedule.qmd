@@ -1,0 +1,345 @@
+---
+title: "HSP 2024 Full Schedule"
+subtitle: "May 16-18, Ann Arbor, MI"
+#Human Sentence Processing 2024
+toc: true
+execute: 
+  freeze: false
+  echo: false
+  warning: false
+  message: false
+#pdf-engine: tinytex
+format: 
+  pdf:
+    include-in-header: 
+      text: '\usepackage[sfdefault]{FiraSans}'
+   # documentclass: report
+    output-file: full_schedule.pdf
+#    fontfamily: helvet
+#    classoption: landscape
+    geometry:
+      - top=1in
+      - left=1in
+      - bottom=1in
+      - right=1in
+---
+
+```{r}
+library(tidyverse)
+library(gtExtras)
+here::i_am("full_schedule.qmd")
+library(here)
+```
+
+```{r}
+# these data were derived from a calendar-format
+# google sheet that the committee could edit
+# hence the odd format - all rds files are generated
+# by `program.qmd`
+df_progmod <- readRDS(here("_scripts", "df_progmod.rds"))
+```
+
+Presentations marked with an asterisk (*) on the program are those indicated as influenced by Janet Dean Fodor and/or her work. 
+
+## Thursday Plenary
+
+```{r}
+#| echo: false
+df_progmod  |> 
+  select(time, thu_fodor, thu_text) |> 
+    filter(!is.na(thu_text)) |> 
+  add_row(time = "", thu_text = "Session 1. Chair: Dave Kush", .after = 2) |> 
+  add_row(time = "", thu_text = "Session 2. Chair: E. Matthew Husband", .after = 7) |> 
+  add_row(time = "", thu_text = "Session 3. Chair: Emily Atkinson", .after = 11) |> 
+  add_row(time = "", thu_text = "Session 4. Chair: Emily Morgan", .after = 16) |> 
+  gt() |> 
+  cols_align(align = "left", columns = everything()) |> 
+  opt_row_striping(TRUE) |> 
+#  opt_vertical_padding(3) |> 
+  cols_label(
+    time = "Time",
+    thu_fodor = "Thursday"
+  ) |>
+  cols_merge(
+    columns = c(thu_fodor, thu_text),
+    pattern = "<<{1}>>{2}"
+  ) |> 
+  cols_width(
+    time ~ pct(10),
+    thu_fodor ~ pct(90)
+  ) |>
+  tab_style(
+    style = cell_fill(color = "#99cfd1"),
+    locations = cells_body(
+    rows = c(3,8,12,17)
+    )
+  ) |> 
+  tab_style(
+    style = cell_fill(color = "#d2eeea"),
+    locations = cells_body(
+    rows = c(7,11,16,21)
+    )
+  ) |> 
+    tab_style(
+    style = cell_fill(color = "#7FE0DB"),
+    locations = cells_body(
+      rows = 22
+      )
+  )
+
+```
+
+## Friday Plenary
+
+```{r}
+#| echo: false
+df_progmod  |> 
+  select(time, fri_fodor, fri_text) |> 
+    filter(!is.na(fri_text)) |> 
+  add_row(time = "", fri_text = "Session 5: Socially Situated Language Processing. Chair: Cynthia Lukyanenko", .after = 1) |> 
+  add_row(time = "", fri_text = "Session 6. Chair: Yi Ting Huang", .after = 6) |> 
+  add_row(time = "", fri_text = "Session 7. Chair: Dustin Chacón", .after = 11) |> 
+  add_row(time = "", fri_text = "Session 8. Chair: Liina Pylkkänen", .after = 14) |>
+  gt() |> 
+  cols_align(align = "left", columns = everything()) |> 
+  opt_row_striping(TRUE) |> 
+  cols_width(
+    time ~ pct(10),
+    fri_fodor ~ pct(90)
+  ) |>
+  cols_label(
+    time = "Time",
+    fri_fodor = "Friday"
+    ) |>
+  cols_merge(
+    columns = c(fri_fodor, fri_text),
+    pattern = "<<{1}>>{2}"
+  ) |> 
+  tab_style(
+    style = cell_fill(color = "#99cfd1"),
+    locations = cells_body(
+    rows = c(2,7,12,15)
+      )
+  ) |> 
+  tab_style(
+    style = cell_fill(color = "#d2eeea"),
+    locations = cells_body(
+      rows = c(6,10,14)
+      )
+  ) |> 
+    tab_style(
+    style = cell_fill(color = "#7FE0DB"),
+    locations = cells_body(
+      rows = c(11,19)
+      )
+  )
+
+```
+
+## Saturday Plenary
+
+```{r}
+#| echo: false
+df_progmod  |> 
+  select(time, sat_fodor, sat_text) |> 
+    filter(!is.na(sat_text)) |> 
+    add_row(time = "", sat_text = "Session 9. Chair: Jennifer Arnold", .after = 1) |> 
+    add_row(time = "", sat_text = "Session 10. Chair: Victor Ferreira", .after = 6) |> 
+    add_row(time = "", sat_text = "Session 11. Chair: Matthew Traxler", .after = 11) |> 
+    add_row(time = "", sat_text = "Session 12. Chair: Dan Parker", .after = 15) |> 
+  gt() |> 
+  cols_align(align = "left", columns = everything()) |> 
+  opt_row_striping(TRUE) |> 
+  cols_label(
+    time = "Time",
+    sat_fodor = "Saturday"
+  ) |>
+  cols_merge(
+    columns = c(sat_fodor, sat_text),
+    pattern = "<<{1}>>{2}"
+  ) |> 
+  cols_width(
+    time ~ pct(10),
+    sat_fodor ~ pct(90)
+  ) |>
+  tab_style(
+    style = cell_fill(color = "#99cfd1"),
+    locations = cells_body(
+    rows = c(2,7,12,16)
+    )
+  ) |> 
+  tab_style(
+    style = cell_fill(color = "#d2eeea"),
+    locations = cells_body(
+      rows = c(6,10,15)
+      )
+  ) |> 
+    tab_style(
+    style = cell_fill(color = "#7FE0DB"),
+    locations = cells_body(
+      rows = 11
+      )
+  )
+
+```
+
+## Poster Session A 
+
+```{r}
+df_posters <- readRDS(here("_scripts", "df_posters.rds"))
+
+df_posters <- df_posters |>
+  select(-c(keywords,url,osf)) |> 
+  relocate(submission_title, .before = authors) |> 
+  relocate(fodor, .before = submission_title) 
+
+# compute manually even rows
+rows_to_spanA <- which(seq_len(nrow(filter(df_posters,session == "A"))) %% 2 == 0)
+rows_to_spanB <- which(seq_len(nrow(filter(df_posters,session == "B"))) %% 2 == 0)
+rows_to_spanC <- which(seq_len(nrow(filter(df_posters,session == "C"))) %% 2 == 0)
+rows_to_spanD <- which(seq_len(nrow(filter(df_posters,session == "D"))) %% 2 == 0)
+
+df_posters |>
+  filter(session == "A") |> 
+  gt() |> 
+  cols_label(
+    fodor = "Title",
+    authors = "Authors",
+    poster_modality = "Modality",
+    session = "Num"
+  ) |>
+  cols_align(align = "left", columns = everything()) |> 
+  cols_merge(
+    columns = c(fodor, submission_title),
+    pattern = "<<{1}>>{2}"
+  ) |> 
+  cols_merge(
+     columns = c(session, poster_num),
+     pattern = "{1}{2}"
+   ) |> 
+  cols_width(
+    fodor ~ pct(45),
+    authors ~ pct(30),
+    poster_modality ~ pct(15),
+    session ~ pct(10)
+ )  |> 
+  # stripes
+  tab_style(
+    style = cell_fill("gray95"), 
+    locations = cells_body(rows = rows_to_spanA)
+  ) |> 
+  # for striping
+  tab_options(quarto.disable_processing = TRUE)
+
+```
+
+## Poster Session B
+
+```{r}
+df_posters |>
+  filter(session == "B") |> 
+  gt() |> 
+  cols_label(
+    fodor = "Title",
+    authors = "Authors",
+    poster_modality = "Modality",
+    session = "Num"
+  ) |>
+  cols_align(align = "left", columns = everything()) |> 
+  cols_merge(
+    columns = c(fodor, submission_title),
+    pattern = "<<{1}>>{2}"
+    ) |> 
+  cols_merge(
+     columns = c(session, poster_num),
+     pattern = "{1}{2}"
+   ) |> 
+  cols_width(
+    fodor ~ pct(45),
+    authors ~ pct(30),
+    poster_modality ~ pct(15),
+    session ~ pct(10)
+ )   |> 
+  # stripes
+  tab_style(
+    style = cell_fill("gray95"), 
+    locations = cells_body(rows = rows_to_spanB)
+  ) |> 
+  # for striping
+  tab_options(quarto.disable_processing = TRUE)
+
+```
+
+## Poster Session C
+
+```{r}
+df_posters |>
+  filter(session == "C") |> 
+  gt() |> 
+  cols_label(
+    fodor = "Title",
+    authors = "Authors",
+    poster_modality = "Modality",
+    session = "Num"
+  ) |>
+  cols_align(align = "left", columns = everything()) |> 
+  cols_merge(
+    columns = c(fodor, submission_title),
+    pattern = "<<{1}>>{2}"
+  ) |> 
+  cols_merge(
+     columns = c(session, poster_num),
+     pattern = "{1}{2}"
+   ) |> 
+  cols_width(
+    fodor ~ pct(45),
+    authors ~ pct(30),
+    poster_modality ~ pct(15),
+    session ~ pct(10)
+ )   |> 
+  # stripes
+  tab_style(
+    style = cell_fill("gray95"), 
+    locations = cells_body(rows = rows_to_spanC)
+  ) |> 
+  # for striping
+  tab_options(quarto.disable_processing = TRUE)
+
+```
+
+## Poster Session D
+
+```{r}
+df_posters |>
+  filter(session == "D") |> 
+  gt() |> 
+  cols_label(
+    fodor = "Title",
+    authors = "Authors",
+    poster_modality = "Modality",
+    session = "Num"
+  ) |>
+  cols_align(align = "left", columns = everything()) |> 
+  cols_merge(
+    columns = c(fodor, submission_title),
+    pattern = "<<{1}>>{2}"
+  ) |> 
+  cols_merge(
+     columns = c(session, poster_num),
+     pattern = "{1}{2}"
+   ) |> 
+  cols_width(
+    fodor ~ pct(45),
+    authors ~ pct(30),
+    poster_modality ~ pct(15),
+    session ~ pct(10)
+ )   |> 
+  # stripes
+  tab_style(
+    style = cell_fill("gray95"), 
+    locations = cells_body(rows = rows_to_spanD)
+  ) |> 
+  # for striping
+  tab_options(quarto.disable_processing = TRUE)
+
+```

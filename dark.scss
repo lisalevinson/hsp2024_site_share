@@ -1,0 +1,61 @@
+/*-- scss:defaults --*/
+
+$primary: #555555;
+
+/*-- scss:rules --*/
+
+@font-face {
+  font-family: VictorMonoMed;
+  src: url(VictorMono/VictorMono-Medium.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoIt;
+  src: url(VictorMono/VictorMono-Italic.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoMedIt;
+  src: url(VictorMono/VictorMono-MediumItalic.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoMedOb;
+  src: url(VictorMono/VictorMono-MediumOblique.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoReg;
+  src: url(VictorMono/VictorMono-Regular.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoSB;
+  src: url(VictorMono/VictorMono-SemiBold.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoSBIt;
+  src: url(VictorMono/VictorMono-SemiBoldItalic.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoBIt;
+  src: url(VictorMono/VictorMono-BoldItalic.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoB;
+  src: url(VictorMono/VictorMono-Bold.woff2);
+}
+
+h1, h2 {
+  font-family: VictorMonoBIt;
+}
+a:hover {
+  font-family: VictorMonoSBIt;
+}
+
+b {
+  font-family: VictorMonoSB;
+}

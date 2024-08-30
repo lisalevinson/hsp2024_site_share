@@ -1,0 +1,36 @@
+---
+title: "Presenter Information"
+#Human Sentence Processing 2024
+toc: false
+---
+
+We will post updates for presenters here as conference arrangements are finalized!
+
+## All Presenters (Plenary and Posters)
+
+All presenters can share materials using our [OSF Meetings page](https://osf.io/meetings/hsp2024). You can share your plenary slides, posters, poster walkthrough recordings, and any other auxiliary materials you would like to publically share in your own repository. Follow the "add your poster or talk" link on the page for instructions on emailing your initial materials to start a linked repository. After that, you can [embed video to your "wiki" page](https://help.osf.io/article/260-edit-the-wiki#Embed-Youtube-or-Vimeo-videos), upload other materials directly to the repository, and add tags or further descriptions. You can read [more general information about editing OSF repositories from OSF](https://help.osf.io/article/260-edit-the-wiki). 
+
+In connection with the Janet Dean Fodor memorial workshop, we are asking all presenters to indicate if their work has been influenced by Janet Fodor. You can do so by filling out this [very brief Google Form](https://forms.gle/pMcL6x2ux4bqBz776) by **May 8th**. We will include that information in the final program and provide badges to go with poster presentations. Marking Janet's influence in this way is one small way to honor her legacy. 
+
+## Plenary Presentations
+
+Plenary presenters will have 20 minutes for presentation, plus 10 minutes for questions. All plenaries will be live-streamed and recorded. Presenters should have received an email with details about sharing a draft of their presentation materials by **May 9** to support live interpretation services. 
+
+## Poster Presentations
+
+### In-person Posters
+
+Poster boards will accommodate landscape (wide) format posters with dimensions up to 4x3 feet (48x36 inches, 1.2 x .9 meters). In-person poster presenters are also invited to share a digital version of their poster and any other relevant materials on our [OSF Meetings page](https://osf.io/meetings/hsp2024).
+
+### Remote Posters
+
+We are trying to increase accessibility and visibility of remote posters at the conference, and thus are offering three "levels" of remote poster participation - please read through all of the options!
+
+Remote poster presenters should at minimum share a PDF version of their poster using a repository on our [OSF Meetings page](https://osf.io/meetings/hsp2024). You are also encouraged to share a short walkthrough video which can be hosted on a site such as YouTube or Vimeo and embedded on your OSF page. 
+
+You are also invited to optionally have a paper version of your poster printed to be shared at the in-person conference. See guidelines above for in-person poster dimensions; we will share more formatting instructions for this printing service directly with those who indicate interest. For the printing option, we will need a digital version of the poster by **Friday, May 10** (submission form will be sent via email), and you should confirm your interest no later than **Friday, May 3** using the form linked below. 
+
+You also can host a scheduled Q&A session on Zoom with remote and in-person attendees that will be held during one of our poster session times. For this option, we will provide an in-person hub for your poster with a large screen and a Zoom room: you can share your poster in this Zoom room and chat with both other virtual attendees who log in and in-person attendees. If you have chosen to have your poster printed, it will be available next to the monitor. The in-person hub will be located in a large classroom with plenty of space which we hope will permit lively chatter between both online and in-person attendees. 
+
+If you would like to participate in either of these options, please complete [this Google Form](https://forms.gle/XcxrXBvXgS3GDKLq7) by this **Friday, May 3** indicating the poster session time(s) that you may be available for and other preferences. If we do not receive your reply, we will assume that you will only be sharing asynchronous poster materials.
+

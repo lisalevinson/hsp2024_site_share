@@ -1,0 +1,93 @@
+---
+title: "Janet Dean Fodor Memorial Workshop"
+#Human Sentence Processing 2024
+toc: false
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+Wednesday, May 15, 2024, 11:30am-6:00pm  
+[Central Campus Classroom Building
+(CCCB)](https://maps.studentlife.umich.edu/building/central-campus-classroom-building), University of Michigan
+
+[Workshop Recording](https://www.mivideo.it.umich.edu/media/t/1_5el0yj25)
+
+The HSP community was deeply saddened to learn of the passing of Janet Dean Fodor on August 28, 2023. To honor her memory, we will hold a pre-conference workshop the day before the main conference. Janet was an exceptionally influential psycholinguist, having made key contributions to our understanding of linguistic representations, sentence processing, and language acquisition. More relevant to the timing of this workshop is Janet’s role in establishing the CUNY Human Sentence Processing Conference, now known simply as the Human Sentence Processing Conference. In addition, Janet was a significant mentor to many in the field. She saw her leadership role as extending well beyond her home institution to essentially the entire psycholinguistic community, particularly early career researchers, women, and people from underrepresented backgrounds. The workshop will include presentations from many of her former mentees and main collaborators and is open to everyone attending the main conference.
+
+All are welcome to join the remote stream via [Zoom Webinar](https://umich.zoom.us/j/94158604186)
+
+Workshop organizers:  
+
+ - Fernanda Ferreira, University of California, Davis 
+ - John Trueswell, University of Pennsylvania 
+
+Presentations given in person by:   
+
+ - Mara Breen, Mount Holyoke College 
+ - Katy Carlson, Morehead State University 
+ - Fernanda Ferreira, University of California, Davis
+ - Ted Gibson, Massachusetts Institute of Technology 
+ - Mako Hirotani, Carleton University 
+ - Edith Kaan, University of Florida 
+ - Rick Lewis, University of Michigan 
+ - Colin Phillips, University of Oxford  
+ - Irina Sekerina, College of Staten Island, City University of New York  
+
+Comments given virtually by: 
+
+ - Markus Bader, Goethe University  
+ - Eva Fernández, Mercy University 
+ - Lyn Frazier, University of Massachusetts 
+ - Barbara Hemforth, Université Paris Cité-CNRS 
+ - Yuki Hirose, University of Tokyo 
+ - Sun-Ah Jun, University of California, Los Angeles 
+ - Janet Nicol, University of Arizona 
+ - Tom Wasow, Stanford University 
+ 	
+ 	
+![](images/sponsors/NSF_logo.jpg){fig-alt="NSF logo" width="20%"}Supported by the NSF.
+
+```{r}
+library(gt)
+df_fodor <- tibble::tribble(
+       ~Time, ~Presentation,
+         "11:30-12:00",   "Gathering + lunch",
+        "12:00-12:15",    "opening remarks",
+        "12:15-12:25",       "Lyn Frazier*",
+        "12:25-12:50",         "Rick Lewis",
+         "12:50-1:00",  "Barbara Hemforth*",
+          "1:00-1:10",      "Markus Bader*",
+          "1:10-1:35",      "Mako Hirotani",
+          "1:35-1:45",        "Sun-Ah Jun*",
+          "1:45-2:10",       "Katy Carlson",
+          "2:10-2:35",     "Irina Sekerina",
+          "2:35-2:45",     "Eva Fernandez*",
+          "2:45-3:10",         "Mara Breen",
+          "3:10-3:45",       "coffee break",
+          "3:45-4:10",     "Colin Phillips",
+          "4:10-4:20",       "Janet Nicol*",
+          "4:20-4:45",         "Ted Gibson",
+          "4:45-4:55",       "Yuki Hirose*",
+          "4:55-5:20",         "Edith Kaan",
+          "5:20-5:45",  "Fernanda Ferreira",
+          "5:45-5:55",         "Tom Wasow*",
+          "5:55-6:00",    "closing remarks",
+  )
+```
+
+[Full program (PDF)](resources/fodor-workshop-program.pdf)
+
+{{< pdf resources/fodor-workshop-program.pdf width=100% height=600 >}}
+
+
+```{r}
+#| eval: false
+## Schedule
+df_fodor |> 
+  gt() |> 
+  gt::cols_align("left")
+#\* short remote presentations
+```
+
