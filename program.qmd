@@ -45,9 +45,15 @@ library(here)
 fodorsheet <- "https://docs.google.com/spreadsheets/d/1ooKUhYFmt9HS8EVTL7TAqQfVDdPEtGyF5AwRVnGuoeM/"
 program <- "https://docs.google.com/spreadsheets/d/1jMmPlBxbEnSX8Q2jN7AW4eYI6vaGsXh_9OwaSk39ApQ"
 postersessions <- "https://docs.google.com/spreadsheets/d/1daHrMwOnLkNDZVgYGR77fdvQwFOFbN7WDVSSOqHCBE8/"
+```
 
-# uncomment and set a Google account if switching to protected sheets
-#gmail <- "you@umich.edu"
+```{r googleauth}
+gs4_deauth()
+# if switching to protected sheets, comment the previous line and 
+# uncomment and adjust the next two lines with your Google account
+# you will need to interactively auth first - 
+# see googlesheets4 documentation for more details
+#gmail <- "you@uni.edu"
 #gs4_auth(email = gmail)
 ```
 
